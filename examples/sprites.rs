@@ -19,7 +19,7 @@ fn setup(
     let d = 3. * s * Vec3::X;                     
     let n = 7;                      
     let center_id = commands
-        .spawn_bundle(SpatialBundle::default())
+        .spawn_bundle(SpatialBundle::from_transform(Transform::from_translation(100. * Vec3::Z)))
         .insert(Center)
         .id();
     for i in 0..n {
@@ -55,13 +55,14 @@ fn setup(
 fn update(
     time: Res<Time>,
     mut point_query: Query<&mut Transform, With<Center>>,
-    mut transform_query: Query<&mut Transform, (Without<Center>, Without<Camera>)>
+    mut independent_transform_query: Query<&mut IndependentTransform>
 ) {
     point_query.for_each_mut(|mut transform| {
         transform.rotate_z(0.3 * time.delta_seconds());
-    });
-    transform_query.for_each_mut(|mut transform| {
         transform.scale = (1. + time.seconds_since_startup().sin() as f32) * Vec3::ONE;
+    });
+    independent_transform_query.for_each_mut(|mut independent_transform| {
+        independent_transform.rotation = Quat::from_rotation_z(0.5 * (0.5 * time.seconds_since_startup()).sin() as f32);
     });
 }
 

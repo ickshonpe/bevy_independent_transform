@@ -41,7 +41,7 @@ fn main() {
 ## Usage
 
 `IndependentTransform` is a newtype wrapping `Transform`.
-Like `Transform`, an entity with a `IndependentTransform` must also have a `GlobalTransform`.
+Like `Transform`, an entity with a `IndependentTransform` should also have a `GlobalTransform`.
 
 You can insert an `IndependentTransform` component directly, or spawn one of the bundles included with this crate:
 * ```IndependentSpriteBundle```
@@ -56,3 +56,16 @@ If an entity has both `IndependentTransform` and `Transform` components, the `In
 cargo run --example text
 cargo run --example sprites
 ```
+#
+## Notes
+
+For an alternative that respects the Bevy transform hierarchy, see my other crate at
+
+https://github.com/ickshonpe/bevy_fixed_sprites
+
+The approach here seems better for text and game icons, and bevy_fixed_sprites is probably better for sprites representing 
+game characters and objects.
+
+I'm not sure how to combine both methods. Maybe it's not possible without introducing a lot of complexity and extra components, and/or replacing Bevy's `transform_propagate_system` system
+entirely. Haven't really thought about it much though.
+

@@ -5,7 +5,7 @@ use bevy::transform::TransformSystem;
 
 pub use bundles::*;
 
-#[derive(Component, Debug, Default, PartialEq, Clone, Copy, Reflect)]
+#[derive(Component, Debug, Default, PartialEq, Clone, Copy, Reflect, Deref, DerefMut)]
 #[reflect(Component, Default, PartialEq)]
 pub struct IndependentTransform(pub Transform);
 

@@ -1,13 +1,13 @@
 [package]
 name = "bevy_independent_transform"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 keywords = ["bevy", "graphics", "sprites", "games", "render"]
 categories = ["game-development", "graphics"]
 repository = "https://github.com/ickshonpe/bevy_independent_transform"
 readme = "README.md"
-description = "Relative positioning, global scaling and rotation."
+description = "Entities with an IndependentTransform have a position relative to their parent, but aren't part of the Bevy Transform hierarchy."
 
 [dependencies.bevy]
 version = "0.8"
