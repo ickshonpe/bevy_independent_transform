@@ -9,17 +9,10 @@ repository = "https://github.com/ickshonpe/bevy_independent_transform"
 readme = "README.md"
 description = "Relative positioning, global scaling and rotation."
 
-[features]
-default = ["bundles"]
-bundles = ["dep:bevy_render"]
-
 [dependencies.bevy]
 version = "0.8"
 default-features = false
-
-[dependencies.bevy_render]
-version = "0.8"
-optional = true
+features = ["render", "bevy_asset"]
 
 [dev-dependencies]
 bevy = "0.8"

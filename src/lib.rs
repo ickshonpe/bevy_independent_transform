@@ -1,10 +1,8 @@
-#[cfg(feature = "bundles")]
 pub mod bundles;
 
 use bevy::prelude::*;
 use bevy::transform::TransformSystem;
 
-#[cfg(feature = "bundles")]
 pub use bundles::*;
 
 #[derive(Component, Debug, Default, PartialEq, Clone, Copy, Reflect)]
