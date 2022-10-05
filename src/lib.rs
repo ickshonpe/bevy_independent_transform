@@ -61,7 +61,7 @@ impl From<IndependentTransform> for IndependentTransformBundle {
     }
 }
 
-pub fn propagate_translation(
+pub fn update_independent_transforms(
     mut children: Query<(&IndependentTransform, Changed<IndependentTransform>, &mut GlobalTransform, &Parent), Without<Transform>>,
     parents: Query<(&GlobalTransform, Changed<GlobalTransform>), Without<IndependentTransform>>
 ) {
@@ -93,9 +93,16 @@ impl Plugin for IndependentTransformPlugin {
     fn build(&self, app: &mut App) {
         app
         .register_type::<IndependentTransform>()
+        .add_startup_system_to_stage(
+            StartupStage::PostStartup,
+            update_independent_transforms
+                .label(IndependentTransformSystem::PropagateTranslation)
+                .label(TransformSystem::TransformPropagate)
+                .after(bevy::transform::transform_propagate_system)
+        )
         .add_system_to_stage(
             CoreStage::PostUpdate, 
-            propagate_translation
+            update_independent_transforms
                 .label(IndependentTransformSystem::PropagateTranslation)
                 .label(TransformSystem::TransformPropagate)
                 .after(bevy::transform::transform_propagate_system)
