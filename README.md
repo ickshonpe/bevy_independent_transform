@@ -11,6 +11,7 @@ With `Transform` :
 ![image](/assets/dependent.png)
 
 With `IndependentTransform`:
+
 ![image](/assets/independent_text.png)
 
 Supports Bevy 0.8
