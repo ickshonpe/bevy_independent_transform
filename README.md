@@ -16,10 +16,7 @@ With `IndependentTransform`:
 
 Supports Bevy 0.8
 
-#
-
 ## Setup
-
 Add the dependency to your `Cargo.toml`
 
 ```toml
@@ -39,7 +36,6 @@ fn main() {
 ```
 
 ## Usage
-
 `IndependentTransform` is a newtype wrapping `Transform`.
 Like `Transform`, an entity with a `IndependentTransform` should also have a `GlobalTransform`.
 
@@ -56,7 +52,7 @@ If an entity has both `IndependentTransform` and `Transform` components, the `In
 cargo run --example text
 cargo run --example sprites
 ```
-#
+
 ## Notes
 
 For an alternative that respects the Bevy transform hierarchy, see my other crate at
