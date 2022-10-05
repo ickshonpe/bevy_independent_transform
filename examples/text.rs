@@ -7,11 +7,7 @@ use bevy_independent_transform::bundles::IndependentText2dBundle;
 const INDEPENDENT_TEXT: &str = "Text from an IndependentText2dBundle.\nThis text's entity is a child of the sprite entity\nbut it isn't rotated or scaled.\nPress <SPACE>.";
 const DEPENDENT_TEXT: &str = "Text from a Text2dBundle\nRotation and scale are relative to the sprite entity.\nPress <SPACE>.";
 
-const TRANSFORM: Transform = Transform {
-    translation: vec3(0., 80., 0.),
-    scale: Vec3::ONE,
-    rotation: Quat::from_array([0.0, 0.0, 0.12467473, 0.9921977]),
-};
+const TRANSFORM: Transform = Transform::from_translation(vec3(0., 80., 0.));
 
 fn setup(
     mut commands: Commands,
